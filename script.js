@@ -594,6 +594,7 @@ checkButton3.addEventListener("click", () => {
 
 
 resetBtn.addEventListener("click", () => {
+    fetchData()
     getRandomThreeWord();
     clearInterval(countdown);
     timer()
