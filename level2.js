@@ -600,6 +600,8 @@ resetBtn.addEventListener("click", () => {
 });
 resetBtn2.addEventListener("click", () => {
     getRandomFourWord()
+    clearInterval(countdown);
+    timer()
 });
 resetBtn3.addEventListener("click", () => {
     getRandomFiveWord()
