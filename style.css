@@ -241,9 +241,18 @@ body{
 }
 
 .random_textbox_container1, .random_textbox_container1 {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
+    top: 50%;
+    left: 50%;
+}
+.flower{
+    position: absolute;
+    width: 200px;
+    top: -25px;
+    /* z-index: -99; */
 }
 
 .random_text_box1  {
@@ -251,15 +260,16 @@ body{
     width: 150px; /* Circle's width */
     height: 150px; /* Circle's height */
     border-radius: 50%; /* Make it circular */
-    background-color: white;
+    background-color: #fff;
     /* background: url(/Assets/Images/); */
-    border: 0.5px solid rgb(0, 0, 0);
+    /* border: 0.5px solid rgb(0, 0, 0); */
     display: flex;
     justify-content: center;
     align-items: center;
     transform: rotate(30deg);
     padding: 1rem;
     top: 52%;
+    z-index: 9999999 !important;
 }
 
 .letter {
@@ -294,9 +304,11 @@ body{
     overflow: hidden;
 }
 .random_textbox_container2{
+    position: absolute;
     width: 100%;
     display: flex;
     justify-content: center;
+    top: 50%;
 }
 .random_text_box_level2{
     width: 150px;
@@ -316,6 +328,7 @@ body{
     overflow: hidden;
     transform: rotate(30deg);
     top: 52%;
+    z-index: 99999 !important;
 }
 .random_text_box2{
     width: 100%;
