@@ -160,6 +160,7 @@ function autoCheckValue(){
 
 
 function getRandomFiveWord() {
+    fetchData()
     console.log(apidata)
     const randomIndex = Math.floor(Math.random() * apidata.length);
     tempOriginalWord = apidata[randomIndex];
