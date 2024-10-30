@@ -261,6 +261,7 @@ function autoCheckValue(){
 
 
 function getRandomThreeWord() {
+    fetchData()
     console.log(apidata)
     const randomTextBox1 = document.querySelector(".random_text_box1");
     randomTextBox1.innerHTML = ""
