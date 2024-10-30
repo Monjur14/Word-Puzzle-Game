@@ -72,7 +72,7 @@ const selectElement = document.querySelector(".select_level");
 
 
 function timer(){
-    let timeLeft = 15;
+    let timeLeft = 30;
     countdown = setInterval(() => {
         setTimeout(() => {
             timeLeft--;
