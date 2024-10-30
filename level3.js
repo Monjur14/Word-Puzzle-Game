@@ -117,7 +117,8 @@ function shuffleWord(word) {
 function autoCheckValue(){
     const tempFilledWord = filledInputs.join('');
     filledWord = tempFilledWord.toLowerCase();
-    console.log(filledWord)
+    console.log("this is filled word", filledWord)
+    console.log("this is original word", originalWord)
     
     if(filledInputs.length === 5){ 
         setTimeout(() => {
@@ -160,7 +161,6 @@ function autoCheckValue(){
 
 
 function getRandomFiveWord() {
-    fetchData()
     console.log(apidata)
     const randomIndex = Math.floor(Math.random() * apidata.length);
     tempOriginalWord = apidata[randomIndex];
@@ -232,93 +232,18 @@ function fillBlankInput2(letter) {
 }
 
 
-function getRandomThreeWord() {
-    console.log(apidata)
-    const randomTextBox1 = document.querySelector(".random_text_box1");
-    randomTextBox1.innerHTML = ""
-    const randomIndex = Math.floor(Math.random() * apidata.length);
-    tempOriginalWord = apidata[randomIndex];
-    console.log(tempOriginalWord)
-    originalWord = tempOriginalWord.toUpperCase();
 
-    console.log(originalWord)
-
-    let shuffledWord = shuffleWord(originalWord);
-
-    while (shuffledWord === originalWord) {
-        shuffledWord = shuffleWord(originalWord);
-    }
-
-    const transformations = [
-        "rotate(-12deg) translate(50px) rotate(-17deg)",
-        "rotate(130deg) translate(50px) rotate(-160deg)",
-        "rotate(240deg) translate(50px) rotate(-270deg)"
-    ];
-    
-
-    for (let i = 0; i < shuffledWord.length; i++) {
-        setTimeout(() => {
-            const input = document.createElement("input");
-            input.type = "text";
-            input.classList.add("letter", "randomInputBox");
-            input.value = shuffledWord[i];
-            input.maxLength = 1;
-            input.readOnly = true;
-            
-            if (i < transformations.length) {
-                input.style.transform = transformations[i];
-            }
-    
-            input.addEventListener("click", () => {
-                fillBlankInput(input.value);
-                input.style.display = 'none';
-            });
-    
-            input.addEventListener("click", () => {
-                autoCheckValue();
-            });
-    
-            randomTextBox1.appendChild(input);
-    
-        }, i * 100);
-    }
-
-    fillIndex = 0; 
-    filledInputs = []; 
-    fillInputDiv();
-}
-
-
-
-
-
-function fillInputDiv() {
-    const giveInputs = document.querySelectorAll(".give_input");
-    for (let i = 0; i < giveInputs.length; i++) {
-        giveInputs[i].value = ''; 
-    }
-}
-
-function fillBlankInput(letter) {
-    const giveInputs = document.querySelectorAll(".give_input");
-    if (fillIndex < giveInputs.length) { 
-        giveInputs[fillIndex].value = letter;
-        filledInputs[fillIndex] = letter;
-        fillIndex++;
-    }
-}
-
-
-// resetBtn.addEventListener("click", () => {
-//     getRandomFiveWord();
-// });
 
 function reset_btn2() {
-    fetchData()
     clearInterval(countdown);
     randomTextBoxLevelTwo.innerText= ""
-    getRandomFiveWord()
-    timer()
+    fetch("https://wordstar.shabox.mobi/ai/getwords?length=5")
+    .then((res) => res.json())
+    .then((data) => {
+        apidata = data
+        getRandomFiveWord()
+        timer()
+    })
 }
 // resetBtn2.addEventListener("click", () => {
 //     console.log("clicked")

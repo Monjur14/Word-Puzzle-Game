@@ -72,7 +72,7 @@ const selectElement = document.querySelector(".select_level");
 
 
 function timer(){
-    let timeLeft = 20;
+    let timeLeft = 220;
     countdown = setInterval(() => {
         setTimeout(() => {
             timeLeft--;
@@ -160,7 +160,6 @@ function autoCheckValue(){
 
 
 function getRandomFourWord() {
-    fetchData();
     console.log(apidata)
     const randomIndex = Math.floor(Math.random() * apidata.length);
     tempOriginalWord = apidata[randomIndex];
@@ -168,8 +167,6 @@ function getRandomFourWord() {
     console.log(originalWord)
 
     let shuffledWord = shuffleWord(originalWord);
-
-    console.log()
 
     while (shuffledWord === originalWord) {
         shuffledWord = shuffleWord(originalWord);
@@ -231,138 +228,138 @@ function fillBlankInput2(letter) {
 }
 
 
-function getRandomThreeWord() {
-    console.log(apidata)
-    const randomTextBox1 = document.querySelector(".random_text_box1");
-    randomTextBox1.innerHTML = ""
-    const randomIndex = Math.floor(Math.random() * apidata.length);
-    tempOriginalWord = apidata[randomIndex];
-    console.log(tempOriginalWord)
-    originalWord = tempOriginalWord.toUpperCase();
+// function getRandomThreeWord() {
+//     console.log(apidata)
+//     const randomTextBox1 = document.querySelector(".random_text_box1");
+//     randomTextBox1.innerHTML = ""
+//     const randomIndex = Math.floor(Math.random() * apidata.length);
+//     tempOriginalWord = apidata[randomIndex];
+//     console.log(tempOriginalWord)
+//     originalWord = tempOriginalWord.toUpperCase();
 
-    console.log(originalWord)
+//     console.log(originalWord)
 
-    let shuffledWord = shuffleWord(originalWord);
+//     let shuffledWord = shuffleWord(originalWord);
 
-    while (shuffledWord === originalWord) {
-        shuffledWord = shuffleWord(originalWord);
-    }
+//     while (shuffledWord === originalWord) {
+//         shuffledWord = shuffleWord(originalWord);
+//     }
 
-    const transformations = [
-        "rotate(-12deg) translate(50px) rotate(-17deg)",
-        "rotate(130deg) translate(50px) rotate(-160deg)",
-        "rotate(240deg) translate(50px) rotate(-270deg)"
-    ];
+//     const transformations = [
+//         "rotate(-12deg) translate(50px) rotate(-17deg)",
+//         "rotate(130deg) translate(50px) rotate(-160deg)",
+//         "rotate(240deg) translate(50px) rotate(-270deg)"
+//     ];
     
 
-    for (let i = 0; i < shuffledWord.length; i++) {
-        setTimeout(() => {
-            const input = document.createElement("input");
-            input.type = "text";
-            input.classList.add("letter", "randomInputBox");
-            input.value = shuffledWord[i];
-            input.maxLength = 1;
-            input.readOnly = true;
+//     for (let i = 0; i < shuffledWord.length; i++) {
+//         setTimeout(() => {
+//             const input = document.createElement("input");
+//             input.type = "text";
+//             input.classList.add("letter", "randomInputBox");
+//             input.value = shuffledWord[i];
+//             input.maxLength = 1;
+//             input.readOnly = true;
             
-            if (i < transformations.length) {
-                input.style.transform = transformations[i];
-            }
+//             if (i < transformations.length) {
+//                 input.style.transform = transformations[i];
+//             }
     
-            input.addEventListener("click", () => {
-                fillBlankInput(input.value);
-                input.style.display = 'none';
-            });
+//             input.addEventListener("click", () => {
+//                 fillBlankInput(input.value);
+//                 input.style.display = 'none';
+//             });
     
-            input.addEventListener("click", () => {
-                autoCheckValue();
-            });
+//             input.addEventListener("click", () => {
+//                 autoCheckValue();
+//             });
     
-            randomTextBox1.appendChild(input);
+//             randomTextBox1.appendChild(input);
     
-        }, i * 100);
-    }
+//         }, i * 100);
+//     }
 
-    fillIndex = 0; 
-    filledInputs = []; 
-    fillInputDiv();
-}
-
-
+//     fillIndex = 0; 
+//     filledInputs = []; 
+//     fillInputDiv();
+// }
 
 
 
-function fillInputDiv() {
-    const giveInputs = document.querySelectorAll(".give_input");
-    for (let i = 0; i < giveInputs.length; i++) {
-        giveInputs[i].value = ''; 
-    }
-}
-
-function fillBlankInput(letter) {
-    const giveInputs = document.querySelectorAll(".give_input");
-    if (fillIndex < giveInputs.length) { 
-        giveInputs[fillIndex].value = letter;
-        filledInputs[fillIndex] = letter;
-        fillIndex++;
-    }
-}
 
 
+// function fillInputDiv() {
+//     const giveInputs = document.querySelectorAll(".give_input");
+//     for (let i = 0; i < giveInputs.length; i++) {
+//         giveInputs[i].value = ''; 
+//     }
+// }
+
+// function fillBlankInput(letter) {
+//     const giveInputs = document.querySelectorAll(".give_input");
+//     if (fillIndex < giveInputs.length) { 
+//         giveInputs[fillIndex].value = letter;
+//         filledInputs[fillIndex] = letter;
+//         fillIndex++;
+//     }
+// }
 
 
 
 
 
 
-function getRandomFiveWord() {
-    const randomIndex = Math.floor(Math.random() * fiveLetterWords.length);
-    originalWord = fiveLetterWords[randomIndex];
 
-    let shuffledWord = shuffleWord(originalWord);
 
-    while (shuffledWord === originalWord) {
-        shuffledWord = shuffleWord(originalWord);
-    }
+// function getRandomFiveWord() {
+//     const randomIndex = Math.floor(Math.random() * fiveLetterWords.length);
+//     originalWord = fiveLetterWords[randomIndex];
 
-    const randomTextBox = document.querySelector(".random_text_box3");
-    randomTextBox.innerHTML = ''; 
+//     let shuffledWord = shuffleWord(originalWord);
 
-    for (let i = 0; i < shuffledWord.length; i++) {
-        const input = document.createElement("input");
-        input.type = "text";
-        input.classList.add("randomInputBox", "animate__animated", i % 2 !== 0 ? "animate__fadeInDown" : "animate__fadeInUp");
-        input.value = shuffledWord[i];
-        input.maxLength = 1;
-        input.readOnly = true;
+//     while (shuffledWord === originalWord) {
+//         shuffledWord = shuffleWord(originalWord);
+//     }
 
-        input.addEventListener("click", () => {
-            fillBlankInput3(input.value);
-            input.style.display = 'none';
-        });
+//     const randomTextBox = document.querySelector(".random_text_box3");
+//     randomTextBox.innerHTML = ''; 
 
-        randomTextBox.appendChild(input);
-    }
+//     for (let i = 0; i < shuffledWord.length; i++) {
+//         const input = document.createElement("input");
+//         input.type = "text";
+//         input.classList.add("randomInputBox", "animate__animated", i % 2 !== 0 ? "animate__fadeInDown" : "animate__fadeInUp");
+//         input.value = shuffledWord[i];
+//         input.maxLength = 1;
+//         input.readOnly = true;
 
-    fillIndex = 0; 
-    filledInputs = []; 
-    fillInputDiv3(); 
-}
+//         input.addEventListener("click", () => {
+//             fillBlankInput3(input.value);
+//             input.style.display = 'none';
+//         });
 
-function fillInputDiv3() {
-    const giveInputs = document.querySelectorAll(".give_input3");
-    for (let i = 0; i < giveInputs.length; i++) {
-        giveInputs[i].value = ''; 
-    }
-}
+//         randomTextBox.appendChild(input);
+//     }
 
-function fillBlankInput3(letter) {
-    const giveInputs = document.querySelectorAll(".give_input3");
-    if (fillIndex < giveInputs.length) { 
-        giveInputs[fillIndex].value = letter; 
-        filledInputs[fillIndex] = letter; 
-        fillIndex++; 
-    }
-}
+//     fillIndex = 0; 
+//     filledInputs = []; 
+//     fillInputDiv3(); 
+// }
+
+// function fillInputDiv3() {
+//     const giveInputs = document.querySelectorAll(".give_input3");
+//     for (let i = 0; i < giveInputs.length; i++) {
+//         giveInputs[i].value = ''; 
+//     }
+// }
+
+// function fillBlankInput3(letter) {
+//     const giveInputs = document.querySelectorAll(".give_input3");
+//     if (fillIndex < giveInputs.length) { 
+//         giveInputs[fillIndex].value = letter; 
+//         filledInputs[fillIndex] = letter; 
+//         fillIndex++; 
+//     }
+// }
 
 
 // resetBtn.addEventListener("click", () => {
@@ -370,11 +367,15 @@ function fillBlankInput3(letter) {
 // });
 
 function reset_btn2() {
-    fetchData()
     clearInterval(countdown);
     randomTextBoxLevelTwo.innerText= ""
-    getRandomFourWord()
-    timer()
+    fetch("https://wordstar.shabox.mobi/ai/getwords?length=4")
+    .then((res) => res.json())
+    .then((data) => {
+        apidata = data
+        getRandomFourWord()
+        timer()
+    })
 }
 // resetBtn2.addEventListener("click", () => {
 //     console.log("clicked")
