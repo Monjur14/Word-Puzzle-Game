@@ -44,7 +44,7 @@ let apidata;
 
 async function fetchData() {
 try {
-        const response = await fetch("https://wordstar.shabox.mobi/ai/getwords?length=4");
+        const response = await fetch("https://wordstar.shabox.mobi/ai/getwords?length=5");
         const data = await response.json();
         apidata = data;
         console.log(apidata)
@@ -58,7 +58,7 @@ timer()
 
 setTimeout(() => {
     gameMainContainer2.classList.remove("hidden")
-    getRandomFourWord()
+    getRandomFiveWord()
 }, 1000)
 
 const selectElement = document.querySelector(".select_level");
@@ -82,7 +82,7 @@ function timer(){
     
         if (timeLeft === 0) {
             clearInterval(countdown);
-            getRandomThreeWord()
+            getRandomFiveWord()
             timer()
         }
     }, 1000);
@@ -131,7 +131,7 @@ function autoCheckValue(){
                 fetchData()
                 setTimeout(() => {
                     timer()
-                    getRandomFourWord()
+                    getRandomFiveWord()
                     winMSG2.classList.add("hidden")
                 }, 500)
             } else {
@@ -145,7 +145,7 @@ function autoCheckValue(){
                 fetchData()
                 setTimeout(() => {
                     timer()
-                    getRandomFourWord()
+                    getRandomFiveWord()
                     loseMSG2.classList.add("hidden")
                 }, 500)
             }
@@ -158,7 +158,7 @@ function autoCheckValue(){
 
 
 
-function getRandomFourWord() {
+function getRandomFiveWord() {
     console.log(apidata)
     const randomIndex = Math.floor(Math.random() * apidata.length);
     tempOriginalWord = apidata[randomIndex];
@@ -174,10 +174,11 @@ function getRandomFourWord() {
     }
     
     const transformations = [
-        "rotate(-33deg) translate(50px) rotate(5deg)",
-        "rotate(150deg) translate(50px) rotate(-180deg)",
+        "rotate(-40deg) translate(50px) rotate(8deg)",
+        "rotate(155deg) translate(50px) rotate(-185deg)",
         "rotate(240deg) translate(50px) rotate(-270deg)",
-        "rotate(60deg) translate(50px) rotate(-90deg)"
+        "rotate(25deg) translate(50px) rotate(-55deg)",
+        "rotate(90deg) translate(50px) rotate(-120deg)"
     ];
 
     for (let i = 0; i < shuffledWord.length; i++) {
@@ -306,76 +307,19 @@ function fillBlankInput(letter) {
 }
 
 
-
-
-
-
-
-
-function getRandomFiveWord() {
-    const randomIndex = Math.floor(Math.random() * fiveLetterWords.length);
-    originalWord = fiveLetterWords[randomIndex];
-
-    let shuffledWord = shuffleWord(originalWord);
-
-    while (shuffledWord === originalWord) {
-        shuffledWord = shuffleWord(originalWord);
-    }
-
-    const randomTextBox = document.querySelector(".random_text_box3");
-    randomTextBox.innerHTML = ''; 
-
-    for (let i = 0; i < shuffledWord.length; i++) {
-        const input = document.createElement("input");
-        input.type = "text";
-        input.classList.add("randomInputBox", "animate__animated", i % 2 !== 0 ? "animate__fadeInDown" : "animate__fadeInUp");
-        input.value = shuffledWord[i];
-        input.maxLength = 1;
-        input.readOnly = true;
-
-        input.addEventListener("click", () => {
-            fillBlankInput3(input.value);
-            input.style.display = 'none';
-        });
-
-        randomTextBox.appendChild(input);
-    }
-
-    fillIndex = 0; 
-    filledInputs = []; 
-    fillInputDiv3(); 
-}
-
-function fillInputDiv3() {
-    const giveInputs = document.querySelectorAll(".give_input3");
-    for (let i = 0; i < giveInputs.length; i++) {
-        giveInputs[i].value = ''; 
-    }
-}
-
-function fillBlankInput3(letter) {
-    const giveInputs = document.querySelectorAll(".give_input3");
-    if (fillIndex < giveInputs.length) { 
-        giveInputs[fillIndex].value = letter; 
-        filledInputs[fillIndex] = letter; 
-        fillIndex++; 
-    }
-}
-
-
 resetBtn.addEventListener("click", () => {
-    getRandomThreeWord();
+    getRandomFiveWord();
 });
 
 function reset_btn2() {
     fetchData()
     clearInterval(countdown);
-    getRandomFourWord()
+    getRandomFiveWord()
     timer()
 }
 resetBtn2.addEventListener("click", () => {
     console.log("clicked")
-    getRandomFourWord()
+    getRandomFiveWord()
     clearInterval(countdown);
     timer()
 });
