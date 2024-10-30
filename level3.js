@@ -157,9 +157,6 @@ function autoCheckValue(){
     }  
 }
 
-
-
-
 function getRandomFiveWord() {
     console.log(apidata)
     const randomIndex = Math.floor(Math.random() * apidata.length);
