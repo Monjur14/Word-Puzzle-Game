@@ -82,6 +82,7 @@ function timer(){
     
         if (timeLeft === 0) {
             clearInterval(countdown);
+            randomTextBoxLevelTwo.innerText= ""
             getRandomFiveWord()
             timer()
         }
@@ -118,7 +119,7 @@ function autoCheckValue(){
     filledWord = tempFilledWord.toLowerCase();
     console.log(filledWord)
     
-    if(filledInputs.length === 4){ 
+    if(filledInputs.length === 5){ 
         setTimeout(() => {
             // filledWord === originalWord
             if (apidata.includes(filledWord)) {
@@ -307,19 +308,20 @@ function fillBlankInput(letter) {
 }
 
 
-resetBtn.addEventListener("click", () => {
-    getRandomFiveWord();
-});
+// resetBtn.addEventListener("click", () => {
+//     getRandomFiveWord();
+// });
 
 function reset_btn2() {
     fetchData()
     clearInterval(countdown);
+    randomTextBoxLevelTwo.innerText= ""
     getRandomFiveWord()
     timer()
 }
-resetBtn2.addEventListener("click", () => {
-    console.log("clicked")
-    getRandomFiveWord()
-    clearInterval(countdown);
-    timer()
-});
+// resetBtn2.addEventListener("click", () => {
+//     console.log("clicked")
+//     getRandomFiveWord()
+//     clearInterval(countdown);
+//     timer()
+// });

@@ -82,7 +82,8 @@ function timer(){
     
         if (timeLeft === 0) {
             clearInterval(countdown);
-            getRandomThreeWord()
+            randomTextBoxLevelTwo.innerText= ""
+            getRandomFourWord()
             timer()
         }
     }, 1000);
@@ -159,6 +160,7 @@ function autoCheckValue(){
 
 
 function getRandomFourWord() {
+    fetchData();
     console.log(apidata)
     const randomIndex = Math.floor(Math.random() * apidata.length);
     tempOriginalWord = apidata[randomIndex];
@@ -363,19 +365,20 @@ function fillBlankInput3(letter) {
 }
 
 
-resetBtn.addEventListener("click", () => {
-    getRandomThreeWord();
-});
+// resetBtn.addEventListener("click", () => {
+//     getRandomThreeWord();
+// });
 
 function reset_btn2() {
     fetchData()
     clearInterval(countdown);
+    randomTextBoxLevelTwo.innerText= ""
     getRandomFourWord()
     timer()
 }
-resetBtn2.addEventListener("click", () => {
-    console.log("clicked")
-    getRandomFourWord()
-    clearInterval(countdown);
-    timer()
-});
+// resetBtn2.addEventListener("click", () => {
+//     console.log("clicked")
+//     getRandomFourWord()
+//     clearInterval(countdown);
+//     timer()
+// });
